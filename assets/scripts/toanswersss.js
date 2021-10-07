@@ -28,8 +28,10 @@ cc.Class({
 
     // LIFE-CYCLE CALLBACKS:
 
-    // onLoad () {},
-
+    onLoad () {},
+    toanswersss:function(){
+        cc.director.loadScene("playingtwo")
+    },
     start () {
 
     },
