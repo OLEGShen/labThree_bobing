@@ -1,6 +1,10 @@
 window.member = {
     num:null,
 };
+
+window.paiming = {
+    nums:[0,0,0,0,0,0,0,0,0,0],
+};
 cc.Class({
     extends: cc.Component,
     properties: {

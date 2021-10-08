@@ -7,12 +7,20 @@
 window.TheNum = {
     num: null,
 };
+
+
+
 cc.Class({
     extends: cc.Component,
 
     properties: {
 
     },
+
+    countRank(value){
+
+    },
+
     start () {
         
         var level = {
@@ -28,7 +36,7 @@ cc.Class({
             ten: '没有奖哦亲~~~~~'
         },
         this_level; // 存储当前等级
-    
+        var out = 0;
     //  存储当前随机数组
         var NumberArr = [];
         if(TheNum.num == null){
@@ -42,7 +50,6 @@ cc.Class({
             TheNum.num = 1;
         }
         
-
 
     //  生成随机数据
     var a = Math.floor(Math.random() * 6) + 1,
@@ -90,14 +97,17 @@ cc.Class({
             if (ContrastArr.length === 4) {
                 this_level = level.seven; //四进
                 cc.find("Canvas/answer").getComponent("turnaround").set_value(4);
+                out = 3;
                 break;
             } else if (ContrastArr.length === 5) {
                 this_level = level.three; //五红
                 cc.find("Canvas/answer").getComponent("turnaround").set_value(1);
+                out = 7;
                 break;
             } else if (ContrastArr.length === 6) {
                 this_level = level.two; //六红
                 cc.find("Canvas/answer").getComponent("turnaround").set_value(1);
+                out = 8;
                 break;
             } else {
                 // 判断一下，是 "对堂"" or ”一秀“，对堂就是顺子，123456，一秀就是一个只有4；
@@ -121,10 +131,12 @@ cc.Class({
                 if (isContinuityArray) {
                     this_level = level.five;
                     cc.find("Canvas/answer").getComponent("turnaround").set_value(2);
+                    out = 5;
                     break;
                 } else {
                     this_level = level.nine;
                     cc.find("Canvas/answer").getComponent("turnaround").set_value(6);
+                    out = 1;
                     break;
                 }
             };
@@ -141,16 +153,19 @@ cc.Class({
                 if (ContrastArr.length === 4) {
                     this_level = level.seven;
                     cc.find("Canvas/answer").getComponent("turnaround").set_value(4);
+                    out = 3;
                     break;
                 } else {
                     this_level = level.eight;
                     cc.find("Canvas/answer").getComponent("turnaround").set_value(5);
+                    out = 2;
                 }
             };
             break;
         case 3:
             this_level = level.six;
             cc.find("Canvas/answer").getComponent("turnaround").set_value(3);
+            out = 4;
             break;
         case 4:
             // 判断是 "普通状元" or "状元插金花"，普通就是4个四，插金花就是  4个四 + 2个1 ；
@@ -163,18 +178,22 @@ cc.Class({
             if (one == 2) {
                 this_level = level.one; // 插金花
                 cc.find("Canvas/answer").getComponent("turnaround").set_value(1);
+                out = 9;
             } else {
                 this_level = level.four; //普通状元
                 cc.find("Canvas/answer").getComponent("turnaround").set_value(1);
+                out = 6;
             }
             break;
         case 5:
             this_level = level.three; // 五红五子
             cc.find("Canvas/answer").getComponent("turnaround").set_value(1);
+            out = 7;
             break;
         case 6:
             this_level = level.two; //六红六子
             cc.find("Canvas/answer").getComponent("turnaround").set_value(1);
+            out = 8;
             break;
         default:
             // 就是页面都没有四,来判断是否属于 “五子” 和 “六子” 和 “四进” 中的哪一种;
@@ -188,26 +207,33 @@ cc.Class({
                 if (ContrastArr.length === 4) {
                     this_level = level.seven; //四进
                     cc.find("Canvas/answer").getComponent("turnaround").set_value(4);
+                    out = 3;
                     break;
                 } else if (ContrastArr.length === 5) {
                     this_level = level.three; //五子
                     cc.find("Canvas/answer").getComponent("turnaround").set_value(1);
+                    out = 7;
                     break;
                 } else if (ContrastArr.length === 6) {
                     this_level = level.two; //六子
                     cc.find("Canvas/answer").getComponent("turnaround").set_value(1);
+                    out = 8;
                     break;
                 } else {
                     this_level = level.ten;
                     cc.find("Canvas/answer").getComponent("turnaround").set_value(7);
+                    out = 0;
                 }
             };
             break;
     }
 
-    cc.log(this_level);
+    
+    //cc.log(out);
+    paiming.nums[g - 1] += out;
+    
     },
-
+    
  
 });
 
