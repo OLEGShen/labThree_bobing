@@ -48,6 +48,7 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
+        y = ['NO','NO','NO','NO','NO','NO','NO','NO','NO','NO'];
     },
 
     start () {
