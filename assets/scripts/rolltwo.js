@@ -49,7 +49,7 @@ cc.Class({
         if(TheNum.num > numMax){
             TheNum.num = 1;
         }
-        
+        var g = TheNum.num;
 
     //  生成随机数据
     var a = Math.floor(Math.random() * 6) + 1,
@@ -58,8 +58,8 @@ cc.Class({
         d = Math.floor(Math.random() * 6) + 1,
         e = Math.floor(Math.random() * 6) + 1,
         f = Math.floor(Math.random() * 6) + 1;
-        g = TheNum.num;
-        cc.log(g);
+
+       
         
         cc.find("Canvas/rolling").getComponent("turnaround").set_value(a);
         cc.find("Canvas/rollingtwo").getComponent("turntwo").set_value(b);
